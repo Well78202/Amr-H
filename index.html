@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Invitation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="shortcut icon" href="img/4.jpeg" type="image/x-icon" />
+    <script id="tickcounter-sdk" src="https://www.tickcounter.com/static/js/loader.js" async></script>
+  </head>
+
+  <body>
+    <section class="invitation-section" dir="rtl">
+      <div class="border-frame"></div>
+      <!-- Decorative Corners -->
+      <img data-aos="fade-up-right" data-aos-duration="2000" src="img/1.png" class="flower-top-left" alt="Decoration" />
+      <img
+        data-aos="fade-up-left"
+        data-aos-duration="2000"
+        style="rotate: 180deg"
+        src="img/1.png"
+        class="flower-bottom-right"
+        alt="Decoration"
+      />
+
+      <div class="invitation-content-wrapper">
+        <div class="smoke-background"></div>
+
+        <div class="invitation-content text-center">
+          <p data-aos="fade-down" data-aos-duration="2000" class="small-text">نتشرف بدعوتكم لحضور</p>
+          <h2 data-aos="fade-down" data-aos-duration="2000" class="main-title">عقد قران وحفل زفاف</h2>
+          <img
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            src="img/5.png"
+            alt="Bride and Groom"
+            class="bride-groom-img"
+          />
+
+          <div data-aos="fade-up" data-aos-duration="2000" class="names-wrapper">
+            <h3 class="names">عمرو</h3>
+            <h4 class="and-symbol">&</h4>
+            <h3 class="names">H</h3>
+          </div>
+
+          <div data-aos="fade-up" data-aos-duration="2000" class="detail">
+            <p class="details" dir="ltr">08:00 Pm</p>
+            <p class="details" dir="ltr">3 September, 2025</p>
+            <p class="details">روفان صول</p>
+            <p class="details">نزلة صفط اللبن من الطريق الدائري</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SECTION: JOIN US + LOCAL COUNTDOWN (No external libs) ====== -->
+    <section class="counter" dir="rtl">
+      <div class="border-frame"></div>
+
+      <!-- صورة على اليمين -->
+      <img
+        src="img/10.jpg"
+        alt="Join Us"
+        class="counter-img"
+        data-aos="fade-right"
+        data-aos-duration="1200"
+        data-aos-once="true"
+      />
+
+      <div class="counter-content" data-aos="fade-left" data-aos-duration="1200" data-aos-once="true">
+        <h2 class="counter-title">مستنيينكم تنورونا</h2>
+        <p class="counter-text">يوم كله حب وضحك ولحظات غالية، وإحنا بنحتفل ببداية مشوارنا سوا للأبد.</p>
+
+        <!-- صندوق العداد -->
+        <div class="wc-timer" data-aos="zoom-in" data-aos-delay="150">
+          <img src="img/12.png" alt="" class="wc-flower" />
+          <div class="wc-cells">
+            <div class="wc-cell">
+              <div class="wc-num" id="wc-days">0</div>
+              <div class="wc-lbl">DAYS</div>
+            </div>
+            <div class="wc-sep">:</div>
+            <div class="wc-cell">
+              <div class="wc-num" id="wc-hours">00</div>
+              <div class="wc-lbl">HOURS</div>
+            </div>
+            <div class="wc-sep">:</div>
+            <div class="wc-cell">
+              <div class="wc-num" id="wc-mins">00</div>
+              <div class="wc-lbl">MINUTES</div>
+            </div>
+            <div class="wc-sep">:</div>
+            <div class="wc-cell">
+              <div class="wc-num" id="wc-secs">00</div>
+              <div class="wc-lbl">SECONDS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+          once: true,
+          duration: 900,
+          easing: "ease-out",
+          offset: 60,
+        });
+      });
+    </script>
+    <script>
+      // حدّد التاريخ والوقت المستهدف
+      const WC_TARGET = new Date("2025-09-03T18:00:00+02:00");
+
+      const $ = (id) => document.getElementById(id);
+      const out = {
+        d: $("wc-days"),
+        h: $("wc-hours"),
+        m: $("wc-mins"),
+        s: $("wc-secs"),
+      };
+
+      function wcTick() {
+        const now = Date.now();
+        let diff = WC_TARGET.getTime() - now;
+
+        if (diff <= 0) {
+          out.d.textContent = out.h.textContent = out.m.textContent = out.s.textContent = "00";
+          return;
+        }
+        const days = Math.floor(diff / 86400000);
+        diff %= 86400000;
+        const hours = Math.floor(diff / 3600000);
+        diff %= 3600000;
+        const mins = Math.floor(diff / 60000);
+        diff %= 60000;
+        const secs = Math.floor(diff / 1000);
+
+        out.d.textContent = days;
+        out.h.textContent = String(hours).padStart(2, "0");
+        out.m.textContent = String(mins).padStart(2, "0");
+        out.s.textContent = String(secs).padStart(2, "0");
+
+        requestAnimationFrame(() => setTimeout(wcTick, 250));
+      }
+      wcTick();
+    </script>
+
+    <section class="dress-code-section">
+      <div class="border-frame"></div>
+
+      <!-- Decorative Corners -->
+      <img data-aos="fade-up-right" data-aos-duration="2000" src="img/1.png" class="flower-top-left" alt="Decoration" />
+      <img
+        data-aos="fade-up-left"
+        data-aos-duration="2000"
+        style="rotate: 180deg"
+        src="img/1.png"
+        class="flower-bottom-right"
+        alt="Decoration"
+      />
+
+      <div class="invitation-content-wrapper">
+        <div class="smoke-background"></div>
+
+        <div class="invitation-content">
+          <h2 data-aos="zoom-in-down" data-aos-duration="2000" class="main-title" style="margin-top: 40px">
+            📸 شاركوا ذكرياتكم
+          </h2>
+
+          <p data-aos="fade-right" data-aos-duration="2000" class="details arabic-text" dir="rtl">
+            صورتم لحظات حلوة في الفرح؟ شاركوها معانا برفعها على QR Code!
+          </p>
+
+          <div class="groub" data-aos="fade-up" data-aos-duration="2000">
+            <img src="img/qr.png" alt="QR Code" width="320px" height="320px" class="qr-code" />
+            <button class="btn">
+              <a style="text-decoration: none" target="_blank" href="https://t.me/+NWeiOlkNJtM2N2Rk">
+                <div class="wrapper">
+                  <p class="text">Join Now</p>
+
+                  <div class="flower flower1">
+                    <div class="petal one"></div>
+                    <div class="petal two"></div>
+                    <div class="petal three"></div>
+                    <div class="petal four"></div>
+                  </div>
+                  <div class="flower flower2">
+                    <div class="petal one"></div>
+                    <div class="petal two"></div>
+                    <div class="petal three"></div>
+                    <div class="petal four"></div>
+                  </div>
+                  <div class="flower flower3">
+                    <div class="petal one"></div>
+                    <div class="petal two"></div>
+                    <div class="petal three"></div>
+                    <div class="petal four"></div>
+                  </div>
+                  <div class="flower flower4">
+                    <div class="petal one"></div>
+                    <div class="petal two"></div>
+                    <div class="petal three"></div>
+                    <div class="petal four"></div>
+                  </div>
+                  <div class="flower flower5">
+                    <div class="petal one"></div>
+                    <div class="petal two"></div>
+                    <div class="petal three"></div>
+                    <div class="petal four"></div>
+                  </div>
+                  <div class="flower flower6">
+                    <div class="petal one"></div>
+                    <div class="petal two"></div>
+                    <div class="petal three"></div>
+                    <div class="petal four"></div>
+                  </div>
+                </div>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-section">
+      <div class="border-frame"></div>
+      <!-- الإطار هنا فوق كل حاجة -->
+
+      <div class="location-container">
+        <!-- Left: Event Details -->
+        <div data-aos="fade-right" data-aos-duration="2000" class="location-details">
+          <h2 class="location-title">
+            Bear witness to
+            <br />
+            our special day
+          </h2>
+
+          <div class="event-info">
+            <h3 class="info-heading">🕕 Time</h3>
+            <p class="info-text">Start At 8:00 PM</p>
+          </div>
+
+          <div class="event-info">
+            <h3 class="info-heading">📅 Date</h3>
+            <p class="info-text">3 September, 2025</p>
+          </div>
+
+          <div class="event-info">
+            <h3 class="info-heading">📍 Venue</h3>
+            <p class="info-text">Soul venue</p>
+            <p class="info-text">40 Al Shafie Villas, Kerdasa Tourist Road, Giza, Egypt</p>
+          </div>
+        </div>
+
+        <!-- Right: Map Embed -->
+        <div data-aos="fade-left" data-aos-duration="2000" class="location-map-wrapper">
+          <img
+            data-aos="fade-up-right"
+            data-aos-duration="2000"
+            src="img/1.png"
+            alt="Flower decoration"
+            class="map-flower top-left"
+          />
+          <img
+            data-aos="fade-up-left"
+            data-aos-duration="2000"
+            src="img/1.png"
+            alt="Flower decoration"
+            style="rotate: 180deg"
+            class="map-flower bottom-right"
+          />
+
+          <iframe
+            class="google-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.2253692445656!2d31.156342900000002!3d30.030391599999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145845b786a970b3%3A0x39cf6b7fffd33076!2sSoul%20location!5e0!3m2!1sar!2seg!4v1755188284564!5m2!1sar!2seg"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          <a href="https://maps.app.goo.gl/TyYD4MAAZRypoG1K9?g_st=aw" target="_blank" class="open-location-btn">
+            <span>📍 Open Location</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- ====== سكشن تأكيد الحضور + المشاركة ====== -->
+    <section class="rsvp-section" dir="rtl">
+      <h2 class="rsvp-title">📅 هتيجوا ولا أزعل؟</h2>
+      <p class="rsvp-text">يا جماعة عايزين نعمل كشف حضور، اللي مش هييجي هنخصمله من التورتة 😂</p>
+
+      <!-- الفورم مدموج -->
+      <div class="rsvp-embed">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeUwYBrIzYYKf0V7KaHtJU6hhRIL5z2K_6FPZX-f5iPvjFPDg/viewform?embedded=true"
+          width="100%"
+          height="800"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+        >
+          جاري تحميل…
+        </iframe>
+      </div>
+
+      <!-- أزرار المشاركة -->
+      <div class="share-buttons">
+        <button onclick="copyLink()" class="share-btn">📋 انسخ رابط الدعوة للّي بيقولك "هات اللوكيشن"</button>
+        <a
+          href="https://wa.me/?text=فرحنا%20يوم%203%20سبتمبر%202025%20-%20اللي%20هيفوت%20مش%20هنسامحه!%20[LINK_HERE]"
+          target="_blank"
+          class="share-btn"
+        >
+          💬 ابعته على واتساب للناس اللي بتزوغ
+        </a>
+        <a href="https://www.instagram.com/direct/new/" target="_blank" class="share-btn">
+          📸 ابعته على إنستجرام وخليهم يغيروا
+        </a>
+      </div>
+    </section>
+
+    <script>
+      function copyLink() {
+        navigator.clipboard
+          .writeText(window.location.href)
+          .then(() => alert("تم نسخ رابط الدعوة! ابعته بقى قبل ما نغير رأينا 😂"));
+      }
+    </script>
+  </body>
+  <script>
+    AOS.init();
+  </script>
+</html>

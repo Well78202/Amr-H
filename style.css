@@ -1,0 +1,836 @@
+/* =========================
+   Base
+========================= */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #fff;
+  font-family: "Cairo", sans-serif;
+}
+
+/* إطار زخرفي يُعاد استخدامه في كل الأقسام */
+.border-frame {
+  position: absolute;
+  inset: 20px;
+  border: 8px solid #d3bca8;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* زخارف الزوايا العامة */
+.flower-top-left,
+.flower-bottom-right {
+  position: absolute;
+  width: 30vw;
+  max-width: 500px;
+  z-index: 2;
+}
+.flower-top-left {
+  top: 0;
+  left: 0;
+}
+.flower-bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+/* =========================
+   Section: Invitation
+========================= */
+.invitation-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #fdfdfd;
+  overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* خلفية دخانية */
+.smoke-background {
+  position: absolute;
+  inset: 0;
+  background: url("img/4.webp") no-repeat center/cover;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* حاوية محتوى الدعوة */
+.invitation-content-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  z-index: 3; /* فوق الإطار والخلفية */
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+/* محتوى الدعوة */
+.invitation-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #001f3f;
+  padding: 20px 5vw;
+  max-width: 1000px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.small-text {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #4c4c4c;
+  margin-bottom: 10px;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #2f2f74;
+  margin: 10px 0 20px;
+}
+
+.bride-groom-img {
+  width: clamp(120px, 25vw, 220px);
+  margin: 15px 0;
+  background-color: transparent;
+  object-fit: contain;
+}
+
+.names-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* مسافة بين الأسماء ورمز & */
+  flex-wrap: wrap;
+}
+
+.names {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #2f2f74;
+  margin: 6px 0;
+}
+
+.and-symbol {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  margin: 6px 0;
+  color: #333;
+}
+
+.details {
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  line-height: 1.1;
+  color: #444;
+  margin: 2px 0;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* موبايل في سكشن الدعوة */
+@media (max-width: 480px) {
+  .invitation-content {
+    padding: 20px;
+  }
+  .flower-top-left,
+  .flower-bottom-right {
+    width: 45vw;
+  }
+}
+
+/* =========================
+   Section: Counter (Join Us + Local Countdown)
+========================= */
+.counter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  gap: 40px;
+  min-height: 100vh;
+  background-color: #fefefe;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.counter-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.counter-content {
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+.counter-title {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  color: #c89b7b;
+  margin-bottom: 10px;
+}
+
+.counter-text {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* صندوق العداد */
+.wc-timer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  margin: 0 auto;
+  padding: 20px 28px;
+  background: #dff0fb;
+  border: 2px solid #c6d9e6;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.wc-flower {
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  width: 58px;
+  height: auto;
+  pointer-events: none;
+}
+.wc-cells {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+.wc-cell {
+  text-align: center;
+  min-width: 110px;
+}
+.wc-num {
+  font-size: 76px;
+  line-height: 1;
+  font-weight: 700;
+  color: #111;
+}
+.wc-lbl {
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: #333;
+  margin-top: 6px;
+}
+.wc-sep {
+  font-size: 72px;
+  line-height: 1;
+  color: #a37f86;
+  font-weight: 600;
+  transform: translateY(-2px);
+}
+
+/* تحسين الأداء للحركات */
+.counter-img,
+.counter-content,
+.wc-timer {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ريسبونسف للكاونتر */
+@media (max-width: 768px) {
+  .counter {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .counter-title {
+    font-size: 2.5rem;
+  }
+  .counter-text {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+  .counter-img {
+    max-width: 80%;
+    padding: 10px;
+  }
+}
+@media (max-width: 520px) {
+  .wc-num {
+    font-size: 48px;
+  }
+  .wc-sep {
+    font-size: 44px;
+  }
+  .wc-cell {
+    min-width: 78px;
+  }
+  .wc-timer {
+    padding: 14px 16px;
+  }
+  .wc-flower {
+    width: 48px;
+    right: -10px;
+    top: -10px;
+  }
+}
+
+/* =========================
+   Section: Dress Code / QR (شاركوا ذكرياتكم)
+========================= */
+.dress-code-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #fdfdfd;
+  overflow: hidden;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.dress-code-section .border-frame {
+  z-index: 1;
+}
+
+/* إعادة استخدام حاوية ومحتوى الدعوة */
+.dress-code-section .invitation-content-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 3;
+}
+.dress-code-section .smoke-background {
+  z-index: 1;
+}
+.dress-code-section .invitation-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* العنوان داخل هذا القسم */
+.dress-code-section .main-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #2f2f74;
+  margin-bottom: 25px;
+  font-family: "Playfair Display", serif;
+  line-height: 1.3;
+}
+
+.arabic-text {
+  text-align: center;
+  direction: rtl;
+}
+.english-text {
+  text-align: left;
+  direction: ltr;
+}
+
+.qr-code {
+  width: min(70%, 320px);
+  height: auto;
+  margin: 20px auto;
+  display: block;
+}
+
+/* زر “Join Now” — Uiverse flower button */
+.btn {
+  height: 4em;
+  width: 12em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.wrapper {
+  height: 2em;
+  width: 10em;
+  position: relative;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text {
+  font-size: 17px;
+  z-index: 1;
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.7);
+  transition: all 0.5s ease;
+}
+.flower {
+  display: grid;
+  grid-template-columns: 1em 1em;
+  position: absolute;
+  transition: grid-template-columns 0.8s ease;
+}
+.flower1 {
+  top: -12px;
+  left: -13px;
+  transform: rotate(5deg);
+}
+.flower2 {
+  bottom: -5px;
+  left: 8px;
+  transform: rotate(35deg);
+}
+.flower3 {
+  bottom: -15px;
+  transform: rotate(0deg);
+}
+.flower4 {
+  top: -14px;
+  transform: rotate(15deg);
+}
+.flower5 {
+  right: 11px;
+  top: -3px;
+  transform: rotate(25deg);
+}
+.flower6 {
+  right: -15px;
+  bottom: -15px;
+  transform: rotate(30deg);
+}
+.petal {
+  height: 1em;
+  width: 1em;
+  border-radius: 40% 70% / 7% 90%;
+  background: linear-gradient(#07a6d7, #93e0ee);
+  border: 0.5px solid #96d1ec;
+  z-index: 0;
+  transition: width 0.8s ease, height 0.8s ease;
+}
+.two {
+  transform: rotate(90deg);
+}
+.three {
+  transform: rotate(270deg);
+}
+.four {
+  transform: rotate(180deg);
+}
+.btn:hover .petal {
+  background: linear-gradient(#0761d7, #93bdee);
+  border-color: #96b4ec;
+}
+.btn:hover .flower {
+  grid-template-columns: 1.5em 1.5em;
+}
+.btn:hover .flower .petal {
+  width: 1.5em;
+  height: 1.5em;
+}
+.btn:hover .text {
+  background: rgba(255, 255, 255, 0.4);
+}
+@keyframes flower1 {
+  0% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(365deg);
+  }
+}
+@keyframes flower2 {
+  0% {
+    transform: rotate(35deg);
+  }
+  100% {
+    transform: rotate(-325deg);
+  }
+}
+@keyframes flower3 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes flower4 {
+  0% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(375deg);
+  }
+}
+@keyframes flower5 {
+  0% {
+    transform: rotate(25deg);
+  }
+  100% {
+    transform: rotate(-335deg);
+  }
+}
+@keyframes flower6 {
+  0% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(390deg);
+  }
+}
+.btn:hover .flower1 {
+  animation: 15s linear infinite flower1;
+}
+.btn:hover .flower2 {
+  animation: 13s linear 1s infinite flower2;
+}
+.btn:hover .flower3 {
+  animation: 16s linear 1s infinite flower3;
+}
+.btn:hover .flower4 {
+  animation: 17s linear 1s infinite flower4;
+}
+.btn:hover .flower5 {
+  animation: 20s linear 1s infinite flower5;
+}
+.btn:hover .flower6 {
+  animation: 15s linear 1s infinite flower6;
+}
+
+/* ريسبونسف لسكشن الذكريات */
+@media (max-width: 768px) {
+  .counter {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .counter-img {
+    max-width: 360px;
+    width: 80%;
+    border-radius: 16px;
+    margin: 0 auto 8px;
+    padding: 0; /* يلغي أي padding سابق */
+  }
+
+  .counter-content {
+    width: 100%;
+    max-width: 520px;
+    padding: 0 8px;
+  }
+
+  .counter-title {
+    font-size: clamp(1.4rem, 5.5vw, 2rem);
+    margin: 6px 0;
+  }
+
+  .counter-text {
+    font-size: clamp(0.95rem, 3.7vw, 1.05rem);
+    line-height: 1.5;
+    margin: 6px auto 14px;
+    padding: 0 6px;
+  }
+
+  /* العداد نفسه */
+  .wc-timer {
+    width: 100%;
+    max-width: 95vw;
+    padding: 12px 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  .wc-flower {
+    width: 42px;
+    right: -8px;
+    top: -8px;
+  }
+
+  .wc-cells {
+    gap: 10px;
+    justify-content: center;
+  }
+
+  /* خلايا العداد مرنة بدون حد أدنى */
+  .wc-cell {
+    min-width: auto;
+    flex: 1 1 0;
+  }
+
+  /* أحجام أرقام/تسميات العداد متناسبة مع عرض الشاشة */
+  .wc-num {
+    font-size: clamp(28px, 9vw, 42px);
+    line-height: 1;
+    font-variant-numeric: tabular-nums; /* ثبات عرض الأرقام */
+  }
+  .wc-lbl {
+    font-size: clamp(10px, 2.8vw, 12px);
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+  .wc-sep {
+    font-size: clamp(22px, 8vw, 32px);
+    transform: none;
+    line-height: 1;
+  }
+}
+
+/* شاشات أصغر جداً */
+@media (max-width: 420px) {
+  .counter-img {
+    max-width: 92vw;
+  }
+  .wc-cells {
+    gap: 8px;
+  }
+  .wc-timer {
+    padding: 10px 8px;
+  }
+  .wc-num {
+    font-size: clamp(24px, 8.5vw, 36px);
+  }
+  .wc-sep {
+    font-size: clamp(18px, 7vw, 28px);
+  }
+}
+
+/* تأكيد الاتجاه والموضعة في RTL */
+@media (max-width: 768px) {
+  .counter[dir="rtl"] .counter-content,
+  .counter[dir="rtl"] .counter-title,
+  .counter[dir="rtl"] .counter-text {
+    text-align: center;
+  }
+}
+/* =========================
+   Section: Location (الخريطة)
+========================= */
+/* ==== Location Section Fixes ==== */
+/* ==== Location Section Style ==== */
+.location-section {
+  position: relative; /* علشان الإطار يتموضع بالنسبة للسكشن */
+  background-color: #fdf9f5;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.location-section .border-frame {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  border: 8px solid #d3bca8;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.location-container {
+  position: relative; /* عشان المحتوى يبقى فوق الإطار */
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.location-details {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+}
+
+.location-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  color: #2f2f2f;
+  margin-bottom: 30px;
+  line-height: 1.3;
+}
+
+.event-info {
+  margin-bottom: 20px;
+}
+
+.info-heading {
+  font-weight: bold;
+  color: #333;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  margin-bottom: 5px;
+}
+
+.info-text {
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  color: #444;
+  line-height: 1.6;
+}
+
+.location-map-wrapper {
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
+  position: relative;
+  text-align: center;
+}
+
+.google-map {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.open-location-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  background: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.open-location-btn:hover {
+  background: #dcf0f9;
+}
+
+.map-flower {
+  position: absolute;
+  width: 200px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.map-flower.top-left {
+  top: -10px;
+  left: -10px;
+}
+
+.map-flower.bottom-right {
+  bottom: 65px;
+  right: -10px;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .location-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .location-details,
+  .location-map-wrapper {
+    max-width: 100%;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .google-map {
+    height: 300px;
+  }
+
+  .map-flower {
+    width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .google-map {
+    height: 250px;
+  }
+
+  .map-flower {
+    width: 100px;
+  }
+}
+/* RSVP Section */
+.rsvp-section {
+  background: linear-gradient(135deg, #fffaf5, #fdf1e7);
+  padding: 50px 20px;
+  text-align: center;
+  border-top: 8px dashed #d3bca8;
+  border-bottom: 8px dashed #d3bca8;
+}
+
+.rsvp-title {
+  font-size: 2rem;
+  color: #c89b7b;
+  margin-bottom: 10px;
+}
+
+.rsvp-text {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.rsvp-embed {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.share-btn {
+  background: #fff;
+  border: 2px solid #c89b7b;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #444;
+  transition: all 0.3s ease;
+}
+.share-btn:hover {
+  background: #fbeee2;
+}
+
+@media (max-width: 480px) {
+  .share-btn {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}
