@@ -752,7 +752,10 @@ body {
     align-items: center;
     gap: 20px;
   }
-
+  .names-wrapper {
+    flex-direction: column; /* يخليهم تحت بعض */
+    gap: 5px; /* مسافة أقل */
+  }
   .location-details,
   .location-map-wrapper {
     max-width: 100%;
@@ -802,7 +805,7 @@ body {
 .rsvp-embed {
   max-width: 650px;
   margin: 0 auto 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
